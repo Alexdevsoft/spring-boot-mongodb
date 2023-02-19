@@ -8,7 +8,7 @@ import com.alexsandro.workshopmong.domain.User;
 @Repository
 public interface UserRepository extends MongoRepository<User, String>{
 
-	User findOne(String id);
+	//User findOne(String id);
 	
 	
 
