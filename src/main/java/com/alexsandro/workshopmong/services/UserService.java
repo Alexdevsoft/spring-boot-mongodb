@@ -15,19 +15,24 @@ import com.alexsandro.workshopmong.services.exception.ObjectNotFondException;
 public class UserService {
 	
 	@Autowired
-	private UserRepository userRepository;
+	private UserRepository repo;
 	
 	public List<User> findAll(){
-		return userRepository.findAll();
+		return repo.findAll();
 	}
 	
 	public User findById(String id) {
-		Optional<User> obj = userRepository.findById(id);
+		Optional<User> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFondException("Objeto não encontrado"));
 	}
 	
 	public User insert(User obj) {
-		return userRepository.insert(obj);
+		return repo.insert(obj);
+	}
+	
+	public void delete(String id) {
+		findById(id);
+		repo.deleteById(id);
 	}
 	
 	public User fromDTO(UserDTO objDTO) {
